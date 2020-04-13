@@ -1,20 +1,33 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>TODO List</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
-</head>
-<body>
-    <h1><span class="title">Todo</span>List</h1>
-    <div class="inputDiv">
-    	   <input type="text" class="input" placeholder="Things to do!">
-    	   <button class="add"><i class="fas fa-plus"></i></button>
-    </div>
-    <div class="container">
-    </div>
-    <script src='todo.js'></script>
-</body>
+    <head>
+      <title>TODO</title>
+    </head>
+    <body>
+      <div id="results">
+
+      </div>
+      <button id="todo" onclick="FetchTodo()">Show all Todos</button>
+    </body>
+    <script>
+      // fetch todo function
+
+      function FetchTodo(){
+        // http request
+
+        fetch("http://jsonplaceholder.typicode.com/todos/1")
+        .then(function(data){
+          console.log(data)
+          return data.json()
+        })
+        .then(function(data){
+          var results = document.getElementById('results')
+          results.innerHTML = '<p>1. Do Dishes</p><p>2. Make bed</p><p>3. Do laundry</p><p>4. Check E-mail</p><p>5. Workout</p><p>6. Family timr</p><p>7. Homework</p><p>8. Get gas</p><p>9. Wash car</p><p>10. Mow lawn</p>'
+          console.log(data)
+      })
+      .catch(function(error){
+        console.log(error)
+      })
+    }
+    </script>
 </html>
